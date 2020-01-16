@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>wc module &#8212; cw 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="src" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-wc">
+<span id="wc-module"></span><h1>wc module<a class="headerlink" href="#module-wc" title="Permalink to this headline">¶</a></h1>
+<p>&#64;author:Zizhou Lu
+&#64;file: wcfinal.py
+&#64;time: 16/01/2020 17:41
+&#64;file_desc: word count application</p>
+<blockquote>
+<div><dl class="simple">
+<dt>For example: input “wc -w test1” in terminal</dt><dd><p>outputs the word count of the test1 file</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="function">
+<dt id="wc.WChelp">
+<code class="sig-prename descclassname">wc.</code><code class="sig-name descname">WChelp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wc.WChelp" title="Permalink to this definition">¶</a></dt>
+<dd><p># print the help message
+Returns:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wc.WCversion">
+<code class="sig-prename descclassname">wc.</code><code class="sig-name descname">WCversion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wc.WCversion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="wc.mini_wc">
+<code class="sig-prename descclassname">wc.</code><code class="sig-name descname">mini_wc</code><span class="sig-paren">(</span><em class="sig-param">is_l</em>, <em class="sig-param">is_w</em>, <em class="sig-param">is_c</em>, <em class="sig-param">is_m</em>, <em class="sig-param">is_L</em>, <em class="sig-param">files</em><span class="sig-paren">)</span><a class="headerlink" href="#wc.mini_wc" title="Permalink to this definition">¶</a></dt>
+<dd><p># How to count line, word, char, max_length, Longest line
+:param is_l: line flag
+:param is_w: word flag
+:param is_c: char flag
+:param is_m: max_length flag
+:param is_L: Longest line flag
+:param files:</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wc.print_wc">
+<code class="sig-prename descclassname">wc.</code><code class="sig-name descname">print_wc</code><span class="sig-paren">(</span><em class="sig-param">is_l</em>, <em class="sig-param">is_w</em>, <em class="sig-param">is_c</em>, <em class="sig-param">is_m</em>, <em class="sig-param">is_L</em>, <em class="sig-param">line</em>, <em class="sig-param">word</em>, <em class="sig-param">byte</em>, <em class="sig-param">char</em>, <em class="sig-param">max_length</em>, <em class="sig-param">file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#wc.print_wc" title="Permalink to this definition">¶</a></dt>
+<dd><p># define how to print wc</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>is_l</strong> – line count flag</p></li>
+<li><p><strong>is_w</strong> – word count flag</p></li>
+<li><p><strong>is_c</strong> – char count flad</p></li>
+<li><p><strong>is_m</strong> – max_length flag</p></li>
+<li><p><strong>is_L</strong> – Longest line count flag</p></li>
+<li><p><strong>line</strong> – line count</p></li>
+<li><p><strong>word</strong> – word count</p></li>
+<li><p><strong>byte</strong> – byte count</p></li>
+<li><p><strong>char</strong> – char count</p></li>
+<li><p><strong>max_length</strong> – max_length count</p></li>
+<li><p><strong>file_name</strong> – the file name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result and file name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="wc.rearrange_args">
+<code class="sig-prename descclassname">wc.</code><code class="sig-name descname">rearrange_args</code><span class="sig-paren">(</span><em class="sig-param">arguments</em><span class="sig-paren">)</span><a class="headerlink" href="#wc.rearrange_args" title="Permalink to this definition">¶</a></dt>
+<dd><p># bubble all the flags
+:param arguments: all the flags</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>result_args</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="wc.wc">
+<code class="sig-prename descclassname">wc.</code><code class="sig-name descname">wc</code><span class="sig-paren">(</span><em class="sig-param">is_l</em>, <em class="sig-param">is_w</em>, <em class="sig-param">is_c</em>, <em class="sig-param">is_m</em>, <em class="sig-param">is_L</em>, <em class="sig-param">file_list</em><span class="sig-paren">)</span><a class="headerlink" href="#wc.wc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">cw</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">wc module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">src</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Zizhou Lu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/wc.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,167 @@
+import argparse
+
+def my():
+    parser = argparse.ArgumentParser(description='Word Count.')
+    parser.add_argument('-c',
+                      dest='chars',
+                      action='store_true',
+                      default=False,
+                      help='only count bytes')
+
+    parser.add_argument('-w',
+                      dest='words',
+                      action='store_true',
+                      default=False,
+                      help='only count words')
+
+    parser.add_argument('-l',
+                      dest='lines',
+                      action='store_true',
+                      default=False,
+                      help='only count lines')
+
+    parser.add_argument('-L',
+                      dest='longest',
+                      action='store_true',
+                      default=False,
+                      help='only count longest lines')
+
+    parser.add_argument('-m',
+                      dest='mcount',
+                      action='store_true',
+                      default=False,
+                      help='only count the char')
+
+    parser.add_argument("filepaths", nmetavar='file', help='iput files', nargs='*')
+
+    parser.add_argument("--version", action='version', version="wc.py\t"
+                                                                "Copyright (C) 2018 Software Enigneering\t"
+                                                                "Written by Zizhou LU")
+
+
+    args = parser.parse_args()
+    return args
+
+def count(input_name):
+    try:
+        Longest = 0
+        a = open(input_name, "r")
+        total = a.read()
+        LineC = total.count('\n')+1
+        WordC = len(total.split())
+        a.close()
+
+        b = open(input_name, "rb")
+        total = b.read()
+        CharC = len(total)
+        b.close()
+
+        v = open(input_name, "rb")
+        total = v.read()
+        total1 = total.decode('utf-8','ignore')
+        Mcount = len(total1)
+        v.close()
+
+        f = open(input_name, "rb")
+        total = f.read()
+        length = len(total)
+        utf8_length = len(total.decode('utf-8','ignore'))
+        real_length = (utf8_length - length)/2 + length
+        Longest = max(Longest, real_length)
+        f.close()
+
+        return LineC, WordC, CharC, Longest, Mcount
+
+    except IOError:
+        print("We don’t handle that situation yet!")
+        exit(0)
+
+def flagout(flag, LineC, WordC, CharC, Longest, Mcount, filename):
+    if flag == [1,0,0,0,0]:
+        print(LineC, filename)
+    elif flag == [0,1,0,0,0]:
+        print(WordC, filename)
+    elif flag == [0,0,1,0,0]:
+        print(CharC, filename)
+    elif flag == [0,0,0,1,0]:
+        print(Longest, filename)
+    elif flag == [0,1,1,0,0]:
+        print(WordC, CharC, filename)
+    elif flag == [1,0,1,0,0]:
+        print(LineC, CharC, filename)
+    elif flag == [1,1,0,0,0]:
+        print(LineC, WordC, filename)
+    elif flag == [1,1,1,0,0]:
+        print(LineC, WordC, CharC, filename)
+    elif flag == [1,0,0,1,0]:
+        print(LineC, Longest, filename)
+    elif flag == [0,1,0,1,0]:
+        print(WordC, Longest, filename)
+    elif flag == [0,0,1,1,0]:
+        print(CharC, Longest, filename)
+    elif flag == [0,1,1,1,0]:
+        print(WordC, CharC, Longest, filename)
+    elif flag == [1,0,1,1,0]:
+        print(LineC, CharC, Longest, filename)
+    elif flag == [1,1,0,1,0]:
+        print(LineC, WordC, Longest, filename)
+    elif flag == [1,1,1,1,0]:
+        print(LineC, WordC, CharC, Longest, filename)
+    elif flag == [0,0,0,0,1]:
+        print(Mcount, Mcount, filename)
+    elif flag == [0,1,0,0,1]:
+        print(WordC, Mcount, filename)
+    elif flag == [0,0,1,0,1]:
+        print(CharC, Mcount, filename)
+    elif flag == [1,0,0,0,1]:
+        print(LineC, Mcount, filename)
+    elif flag == [0,0,0,1,1]:
+        print(Longest, Mcount, filename)
+    elif flag == [0,1,1,0,1]:
+        print(WordC, CharC, Mcount, filename)
+    elif flag == [1,0,1,0,1]:
+        print(LineC, CharC, Mcount, filename)
+    elif flag == [1,1,0,0,1]:
+        print(LineC, WordC, Mcount, filename)
+    elif flag == [1,1,1,0,1]:
+        print(LineC, WordC, CharC, Mcount, filename)
+    elif flag == [1,0,0,1,1]:
+        print(LineC, Longest, Mcount, filename)
+    elif flag == [0,1,0,1,1]:
+        print(WordC, Longest, Mcount, filename)
+    elif flag == [0,0,1,1,1]:
+        print(CharC, Longest, Mcount, filename)
+    elif flag == [0,1,1,1,1]:
+        print(WordC, CharC, Longest, Mcount, filename)
+    elif flag == [1,0,1,1,1]:
+        print(LineC, CharC, Longest, Mcount, filename)
+    elif flag == [1,1,0,1,1]:
+        print(LineC, WordC, Longest, Mcount, filename)
+    elif flag == [1,1,1,1,1]:
+        print(LineC, WordC, CharC, Longest, Mcount, filename)
+    else:
+        return
+
+def out(list,flag):
+    total_lines, total_words, total_chars, total_longest, total_mcount = 0, 0, 0, 0, 0
+    for filename in list:
+        LineC, WordC, CharC, Longest, Mcount = count(filename)
+        flagout(flag, LineC, WordC, CharC, Longest, Mcount, filename)
+        total_lines += LineC
+        total_words += WordC
+        total_chars += CharC
+        total_longest += Longest
+        total_mcount += Mcount
+    if len(list) > 1:
+        flagout(flag, total_lines, total_words, total_chars, total_longest, total_mcount, 'total')
+
+if __name__ == "__main__":
+
+    args = my()
+
+    if not (args.lines or args.words or args.chars or args.longest or args.mcount):
+        args.lines, args.words, args.chars, args.longest, args.count = True, True, True, True, True
+        out(args.filepaths,[1,1,1,1,1])
+
+    else:
+        out(args.filepaths,[args.lines,args.words,args.chars, args.longest, args.mcount])

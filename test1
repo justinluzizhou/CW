@@ -1,0 +1,14 @@
+def Count(file):
+    a = file.read()
+    print(file.name)
+
+if __name__ == "__main__":
+    import sys
+
+    try:
+        syslen=len(sys.argv)
+        for i in range(1,syslen):
+            with open(sys.argv[i]) as f:
+                Count(f)
+    except IOError:
+        print("We don’t handle that situation yet!")
